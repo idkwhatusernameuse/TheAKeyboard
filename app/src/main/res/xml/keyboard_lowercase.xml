@@ -6,7 +6,19 @@
     android:keyHeight="60dp">
 
     <Row>
-        <Key android:keyLabel="A" android:isRepeatable="true" android:keyEdgeFlags="left" android:codes="1"/>
+        <Key android:keyLabel="k" android:isRepeatable="true" android:codes="69420" android:keyWidth="11%p"/>
+        <Key android:keyLabel="e" android:isRepeatable="true" android:codes="69420" android:keyWidth="11%p"/>
+        <Key android:keyLabel="y" android:isRepeatable="true" android:codes="69420" android:keyWidth="11%p"/>
+        <Key android:keyLabel="s" android:isRepeatable="true" android:codes="69420" android:keyWidth="11%p"/>
+        <Key android:keyLabel="m" android:isRepeatable="true" android:codes="69420" android:keyWidth="11%p"/>
+        <Key android:keyLabel="a" android:isRepeatable="true" android:codes="69420" android:keyWidth="11%p"/>
+        <Key android:keyLabel="s" android:isRepeatable="true" android:codes="69420" android:keyWidth="11%p"/>
+        <Key android:keyLabel="h" android:isRepeatable="true" android:codes="69420" android:keyWidth="11%p"/>
+        <Key android:keyLabel="!" android:isRepeatable="true" android:codes="69420" android:keyWidth="11%p"/>
+    </Row>
+
+    <Row>
+        <Key android:keyIcon="@drawable/ic_caps" android:keyEdgeFlags="left" android:codes="-1"/>
         <Key android:keyLabel="a" android:isRepeatable="true" android:codes="2"/>
         <Key android:keyLabel="á" android:isRepeatable="true" android:codes="3"/>
         <Key android:keyLabel="ª" android:isRepeatable="true" android:codes="4"/>
