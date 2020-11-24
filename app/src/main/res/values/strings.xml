@@ -3,4 +3,9 @@
     <string name="welcome">Welcome to The A Keyboard!</string>
     <string name="enable_keyboard">Enable/disable keyboard</string>
     <string name="licenses">Licenses</string>
+    <string name="disable_secret_mode">Disable secret mode?</string>
+    <string name="enable_secret_mode">Enable secret mode?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="secret_mode_was_enabled">Change to another keyboard, then change back to this keyboard to show secret mode :)</string>
 </resources>

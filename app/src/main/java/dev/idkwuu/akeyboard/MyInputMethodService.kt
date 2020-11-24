@@ -16,8 +16,25 @@ class MyInputMethodService : InputMethodService() {
     private lateinit var keyboard: Keyboard
 
     override fun onCreateInputView(): View {
+        // Get secret_mode setting from SharedPreferences
+        val preferences = getSharedPreferences("dev.idkwuu.theakeyboard.prefs", Context.MODE_PRIVATE)
+        secretMode = preferences.getBoolean("secret_mode", false)
+        // Create the keyboard
         keyboardView = (layoutInflater.inflate(R.layout.keyboard_view, null)) as KeyboardView
-        keyboard = Keyboard(this, if (caps) R.xml.keyboard_uppercase else R.xml.keyboard_lowercase)
+        val xmlKeyboard = if (caps) {
+            if (secretMode) {
+                R.xml.keyboard_uppercase_secret
+            } else {
+                R.xml.keyboard_uppercase
+            }
+        } else {
+            if (secretMode) {
+                R.xml.keyboard_lowercase_secret
+            } else {
+                R.xml.keyboard_lowercase
+            }
+        }
+        keyboard = Keyboard(this, xmlKeyboard)
         keyboardView.keyboard = keyboard
         keyboardView.setOnKeyboardActionListener(onKeyboardActionListener)
         return keyboardView
@@ -28,7 +45,13 @@ class MyInputMethodService : InputMethodService() {
         listOf("A", "Á", "ª", "À", "Ä", "Â", "Ã", "Æ", "Ā", "Å", "Ą")
     )
 
+    private val bottomKeysmash = Pair(
+        listOf("f", "h", "g", "d", "k", "l", "s", "j"),
+        listOf("F", "H", "G", "D", "K", "L", "S", "J")
+    )
+
     private var caps = false
+    private var secretMode = false
 
     private val onKeyboardActionListener: OnKeyboardActionListener =
         object : OnKeyboardActionListener {
@@ -46,7 +69,7 @@ class MyInputMethodService : InputMethodService() {
                         }
                     }
                     -1 -> {
-                        caps = !caps;
+                        caps = !caps
                         keyboard.isShifted = caps
                         keyboardView.invalidateAllKeys()
                     }
@@ -66,11 +89,23 @@ class MyInputMethodService : InputMethodService() {
                             applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                         imeManager.showInputMethodPicker()
                     }
+                    // keysmash a
                     69420 -> {
                         val randomNumber = (0..10).random()
-                        val list = (0..1).random()
                         ic.commitText(
-                            if (list == 0) letters.first[randomNumber] else letters.second[randomNumber],
+                            if (caps) letters.second[randomNumber] else letters.first[randomNumber],
+                            1
+                        )
+                    }
+                    // yed
+                    69421 -> {
+                        ic.commitText(if (caps) "YED" else "yed", 1)
+                    }
+                    // bottom keysmash
+                    69422 -> {
+                        val randomNumber = (0..7).random()
+                        ic.commitText(
+                            if (caps) bottomKeysmash.second[randomNumber] else bottomKeysmash.first[randomNumber],
                             1
                         )
                     }
